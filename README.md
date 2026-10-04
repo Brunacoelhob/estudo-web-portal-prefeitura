@@ -1,73 +1,59 @@
-# Portal da Prefeitura de Mirassol
+# Estudo: portal de prefeitura (HTML, CSS e JavaScript acessíveis)
 
-Este projeto é a estrutura web do portal da Prefeitura de Mirassol, com foco em **acessibilidade**, **usabilidade** e **estilo moderno e institucional**. Desenvolvido com HTML, CSS e JavaScript básico, com integração da biblioteca **Font Awesome** para ícones.
+[![CI](https://github.com/Brunacoelhob/estudo-web-portal-prefeitura/actions/workflows/ci.yml/badge.svg)](https://github.com/Brunacoelhob/estudo-web-portal-prefeitura/actions/workflows/ci.yml)
+![License](https://img.shields.io/badge/c%C3%B3digo-MIT-blue)
 
----
+> **Projeto de estudo.** É uma réplica de *layout* inspirada no portal da Prefeitura de Mirassol-SP, feita para praticar HTML semântico, acessibilidade e responsividade. **Não tem vínculo oficial** com a Prefeitura nem com a Instar Tecnologia (desenvolvedora do portal original). Os links internos são ilustrativos.
 
-## Funcionalidades
+## O que o site tem
 
-### Navegação
+- Cabeçalho em três faixas, menu com submenus, busca, botões de acesso rápido e redes sociais
+- Seção de notícias (3 destaques) e **carrossel** de mais notícias
+- Rodapé com contatos e informações institucionais
+- **Barra de acessibilidade funcional**: aumentar/diminuir texto, alto contraste e pausar animações (as escolhas ficam salvas)
 
-- **Menu principal horizontal**, centralizado e com hover personalizado.
-- **Menus dropdown (submenus)** ativados ao passar o mouse:
-  - Governo
-  - Cidade
-  - Licitações
-  - Serviços (com campo de busca integrado)
+## Como ver
 
-### Acessibilidade
+Sem dependências: abra o `index.html` ou rode um servidor local.
 
-- Botões de:
-  - Aumentar e diminuir fonte
-  - Contraste
-  - Mapa do site
-  - Ícone para leitura facilitada
-- Todos com hover personalizado na cor `#f68b19`.
+```bash
+npm install
+npm start      # http://localhost:8080
+```
 
-### Login/Cadastro
+## Melhorias em relação à primeira versão
 
-- Botão de login com ícone personalizado e efeito de hover com transição suave.
+| Antes | Agora |
+|---|---|
+| Imagem da notícia principal **não carregava** em Linux/GitHub Pages (`grota.jpg` × `Grota.jpg`) | Arquivos em minúsculas, e um teste confere a caixa exata de cada referência |
+| Botões de acessibilidade eram `<div>` sem função | 4 recursos reais, com `aria-pressed`, persistência e limites |
+| Menu só abria com o **mouse** | Abre por teclado e toque, `aria-expanded`, Esc fecha; botão "Menu" no celular |
+| Carrossel girava sem poder parar, com largura fixa e bolinhas `<span>` | Botão de pausa (WCAG 2.2.2), pausa ao focar/passar o mouse, respeita "reduzir movimento", responsivo, bolinhas-botão com rótulo |
+| **Sem nenhuma regra responsiva**; margem fixa de 420px quebrava telas menores (rolagem horizontal) | Layout fluido, *media queries*, validado em Chrome (desktop 1280 px e celular 390 px, sem rolagem horizontal) |
+| `alt` genérico/repetido ("Parque da Grota" em 3 fotos) e campos sem rótulo | Textos alternativos descritivos e únicos; rótulos e nomes acessíveis em todos os controles |
+| Sem "pular para o conteúdo", sem foco visível, sem marcos de navegação | Skip link, foco visível, `<nav aria-label>`, `<main>` |
+| Font Awesome sem integridade; sem política de segurança | SRI no CDN + Content-Security-Policy restritiva (sem script inline) |
+| Rodapé reivindicava "© Instar … todos os direitos reservados" | Crédito honesto + aviso de projeto de estudo |
+| Sem testes | 26 testes (arquivos e acessibilidade do HTML + comportamento dos scripts) e `html-validate` |
 
-### Botões de Acesso Rápido
+## Testes
 
-- **Cidadão**, **Empresa**, **Servidor** com cores distintas e animação de hover.
+```bash
+npm test             # estrutura/acessibilidade do HTML + barra, menu e carrossel (jsdom)
+npm run lint:html    # validação do HTML
+```
 
-### Busca
+## Estrutura
 
-- Campo de busca com botão de lupa estilizado, cor amarela e hover com transição.
+```
+index.html                página
+styles.css                visual original
+acessivel-responsivo.css  acessibilidade, alto contraste e responsividade
+acessibilidade.js · menu.js · carrossel.js · inicio.js
+img/                      imagens (propriedade dos respectivos autores)
+test/
+```
 
-### Redes Sociais
+## Licença e créditos
 
-- Ícones de Facebook, Instagram (rosa), YouTube (vermelho), com espaçamento e alinhamento refinado.
-
-### Rodapé
-
-- Informações de contato com ícones alinhados à direita.
-- Redes sociais com texto "Acompanhe a gente!" ao lado dos ícones.
-- Logo da Instar posicionada corretamente ao lado do copyright.
-- Informações de versão e data centralizadas.
-
----
-
-## Tecnologias
-
-- **HTML5**
-- **CSS3 (Flexbox, Transições, Responsividade)**
-- **Font Awesome** (via CDN)
-
----
-
-## Estrutura de Pastas
-
----
-
-## Como Executar
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/prefeitura-mirassol.git
-
-Autora
-Desenvolvido por Bruna Coelho.
-
-
+O **código** deste repositório é [MIT](LICENSE). As imagens, o brasão e a logomarca pertencem à Prefeitura de Mirassol e aos respectivos autores e estão aqui apenas para fins de estudo.

@@ -1,0 +1,236 @@
+/* Acessibilidade e responsividade (carregado depois de styles.css, que continua sendo o visual base). */
+
+/* ---------- foco visível e "pular conteúdo" ---------- */
+:focus-visible {
+  outline: 3px solid #f68b19;
+  outline-offset: 2px;
+}
+
+.pular-conteudo {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 2000;
+  background: #fff;
+  color: #195191;
+  padding: 10px 16px;
+  font-weight: bold;
+}
+.pular-conteudo:focus {
+  left: 8px;
+  top: 8px;
+}
+
+.aviso-estudo {
+  background: #fff3cd;
+  color: #5c4300;
+  text-align: center;
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+/* ---------- elementos que viraram <button> mantêm o visual antigo ---------- */
+button.icon-box {
+  border: 0;
+  font: inherit;
+}
+button.icon-box:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+button.icon-box[aria-pressed="true"] {
+  background-color: #f68b19;
+}
+
+.menu-alternar {
+  display: none;
+  background: #195191;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  padding: 10px 16px;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ---------- submenus também abrem por teclado/toque ---------- */
+.menu-com-submenu:focus-within .submenu,
+.menu-com-submenu.aberto .submenu {
+  display: block;
+}
+.menu-com-submenu:focus-within .submenu-servicos,
+.menu-com-submenu.aberto .submenu-servicos {
+  display: block;
+}
+
+/* ---------- conteúdo central fluido (antes: margem fixa de 420px, pensada para tela de 1920px) ---------- */
+:root {
+  --largura-card: 262px;
+}
+.container-noticias {
+  width: 100%;
+  height: auto; /* antes: 1000px × 300px fixos, o que sobrepunha o rodapé em telas pequenas */
+  max-width: 1200px;
+  margin: 5px auto;
+  padding: 0 20px 30px;
+}
+.cards-noticias {
+  height: auto;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.card-noticia-principal {
+  width: 100%;
+  height: auto;
+  min-height: 360px;
+}
+.card-noticia {
+  width: var(--largura-card);
+}
+@media (max-width: 400px) {
+  :root {
+    --largura-card: calc(100vw - 80px);
+  }
+}
+
+/* ---------- carrossel responsivo, com controles ---------- */
+.carrossel-noticias {
+  width: 100%;
+  max-width: calc((262px * 4) + (10px * 3));
+  margin: 0 auto;
+}
+.carrossel-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+.carrossel-controles .bolinhas {
+  margin-top: 0;
+}
+.carrossel-pausa {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 0;
+  background: #213b71;
+  color: #fff;
+  cursor: pointer;
+}
+button.dot {
+  border: 0;
+  padding: 0;
+  /* área de toque maior que o desenho (acessibilidade em telas sensíveis ao toque) */
+  position: relative;
+}
+button.dot::after {
+  content: "";
+  position: absolute;
+  inset: -10px -4px;
+}
+
+/* ---------- alto contraste ---------- */
+body.alto-contraste,
+body.alto-contraste *:not(img):not(svg):not(i) {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+body.alto-contraste a,
+body.alto-contraste button,
+body.alto-contraste a *,
+body.alto-contraste button * {
+  color: #ffeb3b !important;
+}
+body.alto-contraste a,
+body.alto-contraste .btn-noticia,
+body.alto-contraste .btn-noticia-carrossel {
+  text-decoration: underline;
+}
+body.alto-contraste .dot.active {
+  background-color: #ffeb3b !important;
+}
+
+/* ---------- animações pausadas (botão da barra ou preferência do sistema) ---------- */
+body.animacoes-pausadas *,
+body.animacoes-pausadas *::before,
+body.animacoes-pausadas *::after {
+  transition: none !important;
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 1000px) {
+  .container,
+  .container-topo {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .container-rodape {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .menu-alternar {
+    display: inline-block;
+  }
+  .menu {
+    display: none;
+    width: 100%;
+  }
+  .menu.menu-aberto {
+    display: block;
+  }
+  .menu-lista {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .submenu,
+  .submenu-servicos {
+    position: static;
+    min-width: 0;
+    width: 100%;
+  }
+  /* no celular só abre por toque (o "hover" fica preso após o toque) */
+  .menu-com-submenu:hover .submenu,
+  .menu-com-submenu:hover .submenu-servicos {
+    display: none;
+  }
+  .menu-com-submenu.aberto .submenu,
+  .menu-com-submenu.aberto .submenu-servicos {
+    display: block;
+  }
+  .faixa-inferior .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .botoes-acesso,
+  .redes {
+    justify-content: center;
+  }
+  .busca {
+    width: 100%;
+  }
+  .busca input {
+    flex: 1;
+    width: auto;
+    min-width: 0; /* antes: 350px fixos, estourando a tela do celular */
+  }
+  .info-final {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}

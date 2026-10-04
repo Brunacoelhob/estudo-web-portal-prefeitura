@@ -1,58 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prefeitura de Mirassol</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prefeitura de Mirassol (projeto de estudo)</title>
+  <meta name="description" content="Estudo de layout do portal da Prefeitura de Mirassol-SP: HTML, CSS e JavaScript acessíveis e responsivos.">
+  <meta name="theme-color" content="#195191">
+  <link rel="icon" type="image/png" href="img/logo-mirassol.png">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com; img-src 'self' data:; script-src 'self'; base-uri 'self'; form-action 'self'">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="acessivel-responsivo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo principal</a>
+    <p class="aviso-estudo">Projeto de estudo: réplica de layout, sem vínculo oficial com a Prefeitura de Mirassol.</p>
     <header>
         <!-- 1ª Faixa - Acessibilidade e Login -->
         <div class="faixa-topo">
             <div class="container-topo">
-        
-            <div class="acessibilidade">
-                <div class="icon-box"><i class="fas fa-plus"></i></div>
-                <div class="icon-box"><i class="fas fa-minus"></i></div>
-                <div class="icon-box"><i class="fas fa-puzzle-piece"></i></div>
-                <div class="icon-box"><i class="fas fa-adjust"></i></div>
-                <div class="icon-box">
-                    <img src="img/icone_Transicao.svg" alt="Transição de Tela" class="svg-icon" />
-                </div>
-                <div class="icon-box"><i class="fas fa-sitemap"></i></div>
-                <div class="icon-box"><i class="fas fa-wheelchair"></i></div>
+
+            <div class="acessibilidade" role="group" aria-label="Recursos de acessibilidade">
+                <button type="button" class="icon-box" data-acao="aumentar" aria-label="Aumentar o tamanho do texto" title="Aumentar texto"><i class="fas fa-plus" aria-hidden="true"></i></button>
+                <button type="button" class="icon-box" data-acao="diminuir" aria-label="Diminuir o tamanho do texto" title="Diminuir texto"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                <button type="button" class="icon-box" data-acao="contraste" aria-label="Alto contraste" aria-pressed="false" title="Alto contraste"><i class="fas fa-adjust" aria-hidden="true"></i></button>
+                <button type="button" class="icon-box" data-acao="animacoes" aria-label="Pausar animações" aria-pressed="false" title="Pausar animações"><i class="fas fa-pause" aria-hidden="true"></i></button>
             </div>
-        
+
             <div class="login-texto">
                 <span><em>FAÇA SEU LOGIN NO PORTAL</em></span>
                 <a href="#" class="btn-login"><i class="fas fa-user-lock"></i> LOGIN / CADASTRO</a>
             </div>
-        
+
             </div>
         </div>
 
         <!-- 2ª Faixa - Logo e Menu -->
         <div class="faixa-meio">
             <div class="container">
-        
+
                 <!-- Logo da Prefeitura -->
                 <div class="logo">
-                    <img src="./img/Logo_Mirassol.png" alt="Logo da Prefeitura" />
+                    <img src="./img/logo-mirassol.png" alt="Brasão da Prefeitura de Mirassol" width="60" height="60">
                     <div class="titulo">
                     <h1>MIRASSOL</h1>
                     <p>PREFEITURA</p>
                     </div>
                 </div>
-        
+
                 <!-- Menu Centralizado -->
-                <nav class="menu">
+                <button type="button" class="menu-alternar" aria-expanded="false" aria-controls="menu-principal"><span class="hamburger" aria-hidden="true">&#9776;</span> Menu</button>
+                <nav class="menu" id="menu-principal" aria-label="Menu principal">
                     <ul class="menu-lista">
                         <li><a href="#">Principal</a></li>
-                
+
                         <li class="menu-com-submenu">
-                            <a href="#">Governo</a>
+                            <a href="#" aria-haspopup="true" aria-expanded="false">Governo</a>
                             <ul class="submenu">
                                 <li><a href="#">Prefeito de Mirassol</a></li>
                                 <li><a href="#">Vice-Prefeito</a></li>
@@ -67,9 +72,9 @@
                                 <li><a href="#">Secretaria de Infraestrutura e Serviços</a></li>
                             </ul>
                         </li>
-                
+
                         <li class="menu-com-submenu">
-                            <a href="#">Cidade</a>
+                            <a href="#" aria-haspopup="true" aria-expanded="false">Cidade</a>
                             <ul class="submenu">
                                 <li><a href="#">15ª Delegacia do Serviço Militar</a></li>
                                 <li><a href="#">Mirassol Futebol Clube</a></li>
@@ -87,7 +92,7 @@
                         </li>
                         <li><a href="#">Acessibilidade</a></li>
                         <li class="menu-com-submenu">
-                            <a href="#">Licitações</a>
+                            <a href="#" aria-haspopup="true" aria-expanded="false">Licitações</a>
                             <ul class="submenu">
                                 <li><a href="#">Contratos</a></li>
                                 <li><a href="#">Editais de Licitação</a></li>
@@ -96,15 +101,15 @@
                         </li>
                         <li><a href="#">Transparência</a></li>
                         <li><a href="#">Diário Oficial</a></li>
-                
+
                         <li class="menu-com-submenu">
-                            <a href="#" class="servicos-btn">
+                            <a href="#" class="servicos-btn" aria-haspopup="true" aria-expanded="false">
                             <span class="hamburger">&#9776;</span> Serviços
                             </a>
                             <div class="submenu-servicos">
                             <div class="filtro-servico">
                                 <i class="fas fa-search"></i>
-                                <input type="text" placeholder="Digite aqui o que procura">
+                                <input type="search" placeholder="Digite aqui o que procura" aria-label="Filtrar serviços">
                             </div>
                                 <ul class="lista-servicos">
                                     <li><a href="#">Notícias</a></li>
@@ -122,35 +127,35 @@
         <div class="faixa-inferior">
                 <div class="container">
                     <div class="botoes-acesso">
-                        <button>CIDADÃO</button>
-                        <button>EMPRESA</button>
-                        <button>SERVIDOR</button>
+                        <button type="button">CIDADÃO</button>
+                        <button type="button">EMPRESA</button>
+                        <button type="button">SERVIDOR</button>
                     </div>
                     <div class="redes">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                     </div>
                     <div class="busca">
-                        <input type="text" placeholder="O que você procura?" />
-                        <button><i class="fas fa-search"></i></button>
+                        <input type="search" placeholder="O que você procura?" aria-label="Buscar no portal">
+                        <button type="submit" aria-label="Buscar"><i class="fas fa-search" aria-hidden="true"></i></button>
                       </div>
                 </div>
         </div>
     </header>
-    <main class="noticias-section">
+    <main class="noticias-section" id="conteudo" tabindex="-1">
         <div class="container-noticias">
-      
+
             <!-- Título e subtítulo -->
             <div class="cabecalho-noticias">
                 <h2 class="titulo-noticia">Notícias</h2>
                 <p class="subtitulo-noticia">Fique por dentro das novidades</p>
             </div>
-        
+
             <!-- Cards Pricipais -->
             <div class="cards-noticias">
                 <div class="card-noticia-principal">
-                    <img src="img/grota.jpg" alt="Parque da Grota" class="img-noticia">
+                    <img src="img/grota.jpg" alt="Obras no Parque Municipal da Grota" class="img-noticia" width="360" height="220" loading="lazy">
                     <h3>Parque da Grota começa a ser revitalizado em Mirassol</h3>
                     <div class="info-noticia">
                         <span><i class="fas fa-calendar-alt"></i> 09 de Abr de 2025 |</span>
@@ -161,7 +166,7 @@
                 </div>
 
                 <div class="card-noticia-principal">
-                    <img src="img/Crusos.jpg" alt="Parque da Grota" class="img-noticia">
+                    <img src="img/cursos-senai-sebrae.jpg" alt="Alunos em curso de capacitação do Senai e Sebrae" class="img-noticia" width="360" height="220" loading="lazy">
                     <h3>Prefeitura de Mirassol promove cursos de capacitação em parceria com Senai e Sebrae</h3>
                     <div class="info-noticia">
                         <span><i class="fas fa-calendar-alt"></i> 09 de Abr de 2025 |</span>
@@ -172,7 +177,7 @@
                 </div>
 
                 <div class="card-noticia-principal">
-                    <img src="img/Dengue.jpg" alt="Parque da Grota" class="img-noticia">
+                    <img src="img/dengue.jpg" alt="Agente de combate à dengue em Mirassol" class="img-noticia" width="360" height="220" loading="lazy">
                     <h3>Boletim da dengue: casos positivos em Mirassol chegam a 2.133</h3>
                     <div class="info-noticia">
                         <span><i class="fas fa-calendar-alt"></i> 09 de Abr de 2025 |</span>
@@ -182,12 +187,12 @@
                     <a href="#" class="btn-noticia">CONTINUAR LENDO <i class="fas fa-plus"></i></a>
                 </div>
             </div>
-        
+
             <!-- Cards Carrossel -->
-            <div class="carrossel-noticias">
+            <div class="carrossel-noticias" role="group" aria-roledescription="carrossel" aria-label="Mais notícias">
                 <div class="carrossel-wrapper">
                     <div class="card-noticia">
-                        <img src="img/Curso.png" alt="Curso" class="img-noticia">
+                        <img src="img/curso.png" alt="Curso de capacitação" class="img-noticia" loading="lazy">
                         <h3>Prefeitura promove cursos com Senai</h3>
                         <div class="info-noticia-carrossel">
                             <div class="data-noticia">
@@ -201,7 +206,7 @@
                     </div>
 
                     <div class="card-noticia">
-                        <img src="img/futebol.jpg" alt="Imagem Futebol" class="img-noticia">
+                        <img src="img/futebol.jpg" alt="Jogadores do Mirassol Futebol Clube" class="img-noticia" loading="lazy">
                         <h3>Prefeitura promove cursos com Senai</h3>
                         <div class="info-noticia-carrossel">
                             <div class="data-noticia">
@@ -215,7 +220,7 @@
                     </div>
 
                     <div class="card-noticia">
-                        <img src="img/IPTU.jpg" alt="iamgem IPTU" class="img-noticia">
+                        <img src="img/iptu.jpg" alt="Carnê do IPTU" class="img-noticia" loading="lazy">
                         <h3>Prefeitura promove cursos com Senai</h3>
                         <div class="info-noticia-carrossel">
                             <div class="data-noticia">
@@ -229,7 +234,7 @@
                     </div>
 
                     <div class="card-noticia">
-                        <img src="img/Prefeito.jpg" alt="Imagem prefeito" class="img-noticia">
+                        <img src="img/prefeito.jpg" alt="Prefeito de Mirassol" class="img-noticia" loading="lazy">
                         <h3>Prefeitura promove cursos com Senai</h3>
                         <div class="info-noticia-carrossel">
                             <div class="data-noticia">
@@ -243,7 +248,7 @@
                     </div>
 
                     <div class="card-noticia">
-                        <img src="img/Grupo.png" alt="imagem pessoas" class="img-noticia">
+                        <img src="img/grupo.png" alt="Grupo de pessoas em evento da prefeitura" class="img-noticia" loading="lazy">
                         <h3>Prefeitura promove cursos com Senai</h3>
                         <div class="info-noticia-carrossel">
                             <div class="data-noticia">
@@ -257,7 +262,7 @@
                     </div>
 
                     <div class="card-noticia">
-                        <img src="img/Limpeza.jpg" alt="Imagem limpeza" class="img-noticia">
+                        <img src="img/limpeza.jpg" alt="Equipe de limpeza urbana" class="img-noticia" loading="lazy">
                         <h3>Prefeitura promove cursos com Senai</h3>
                         <div class="info-noticia-carrossel">
                             <div class="data-noticia">
@@ -271,14 +276,13 @@
                     </div>
 
                 </div>
-                <!-- Navegação por bolinhas -->
-                <div class="bolinhas">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+                <!-- Controles (gerados/atualizados por carrossel.js) -->
+                <div class="carrossel-controles">
+                    <button type="button" class="carrossel-pausa" aria-label="Pausar rotação das notícias"><i class="fas fa-pause" aria-hidden="true"></i></button>
+                    <div class="bolinhas" role="group" aria-label="Posição do carrossel"></div>
                 </div>
             </div>
-      
+
         </div>
       </main>
     <footer class="rodape">
@@ -314,7 +318,7 @@
 
             <!-- COLUNA CENTRAL -->
             <div class="coluna centro">
-                <img src="img/Logo_Mirassol.png" alt="Logo Mirassol" class="logo-rodape">
+                <img src="img/logo-mirassol.png" alt="" class="logo-rodape">
                 <p class="titulo-mirassol">Mirassol</p>
                 <p class="texto-mirassol">Prefeitura</p>
             </div>
@@ -331,7 +335,7 @@
                 </div>
                 <i class="fas fa-phone-alt"></i>
                 </div>
-            
+
                 <!-- Atendimento -->
                 <div class="item-direita">
                 <div class="texto-direita">
@@ -345,12 +349,12 @@
                 <div class="redes-sociais">
                     <span class="texto-social">Acompanhe a gente!</span>
                     <div class="icones-redes">
-                        <a href="#" class="rede rede-facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="rede rede-instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="rede rede-youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="rede rede-facebook" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" class="rede rede-instagram" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="rede rede-youtube" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                     </div>
                 </div>
-            
+
             </div>
 
         </div>
@@ -360,13 +364,16 @@
         </div>
         <div class="info-final">
             <div class="copyright">
-                <span>© Copyright Instar - 2006-2024. Todos os direitos reservados - <strong>Instar Tecnologia</strong></span>
+                <span>Layout inspirado no portal oficial da Prefeitura de Mirassol (desenvolvido pela <strong>Instar Tecnologia</strong>). Projeto de estudo, sem fins comerciais.</span>
             </div>
             <div class="logo-instar">
-                <img src="img/logo_instar.svg" alt="Logo Instar">
+                <img src="img/logo-instar.svg" alt="Logo Instar">
             </div>
         </div>
     </footer>
-    <script src="index.js"></script>
+    <script src="acessibilidade.js"></script>
+    <script src="menu.js"></script>
+    <script src="carrossel.js"></script>
+    <script src="inicio.js"></script>
 </body>
 </html>
